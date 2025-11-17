@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="avatar-section">
+            {% if user.avatar   %}
+                <img src="{{ user.avatar.url }}" alt="Avatar" class="profile-avatar">
+            {% else %}
+                <img src="{% static 'images/default-avatar.png' %}" alt="Аватар" width="150">
+            {% endif %}
+                <div class="avatar-overlay">
+                    <label for="avatar-upload" class="avatar-upload-btn">
+                        📷 Изменить аватар
+                    </label>
+                </div>
+                
+        </div>
+        <h1>Мой профиль</h1>
+        <p class="profile-subtitle">Добро пожаловать, {{ user.username }}!</p>
+    </div>
+    <a href="{% url 'user_library' %}" class="my-library-button">📚 Моя библиотека</a>
+    <div class="profile-content">
+        <div class="profile-info">
+            <h2>📊 Мои данные</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">👤</div>
+                    <div class="info-content">
+                        <span class="info-label">Имя пользователя</span>
+                        <span class="info-value">{{ user.username }}</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">📧</div>
+                    <div class="info-content">
+                        <span class="info-label">Почта</span>
+                        <span class="info-value">{{ user.email }}</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">📅</div>
+                    <div class="info-content">
+                        <span class="info-label">Дата регистрации</span>
+                        <span class="info-value">{{ user.date_joined|date:"d.m.Y" }}</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🕒</div>
+                    <div class="info-content">
+                        <span class="info-label">Последний визит</span>
+                        <span class="info-value">{{ user.last_visit|date:"d.m.Y H:i" }}</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">💬</div>
+                    <div class="info-content">
+                        <span class="info-label">Комментарии</span>
+                        <span class="info-value">{{ user.comment_count }}</span>
+                    </div>
+                </div>
+
+                <div class="info-card bio-card">
+                    <div class="info-icon">📝</div>
+                    <div class="info-content">
+                        <span class="info-label">О себе</span>
+                        <span class="info-value">{{ user.bio|default:"Не указано" }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <input type="checkbox" id="toggle-form" class="toggle-checkbox">
+            <label for="toggle-form" class="edit-button">
+                ✏️ Редактировать профиль
+            </label>
+
+            <div class="profile-edit-form">
+                <h2>✏️ Редактирование профиля</h2>
+                <form method="post" enctype="multipart/form-data" class="profile-form">
+                    {% csrf_token %}
+                    
+                    <input type="file" id="avatar-upload" name="avatar" accept="image/*" class="hidden-upload">
+                    
+                    <div class="form-group">
+                        <label for="id_username">👤 Имя пользователя</label>
+                        {{ form.username }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id_bio">📝 О себе</label>
+                        {{ form.bio }}
+                        <div class="char-count">0/500 символов</div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="cancel-button" onclick="document.getElementById('toggle-form').checked = false">
+                            ❌ Отмена
+                        </button>
+                        <button type="submit" class="submit-button">
+                            💾 Сохранить изменения
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

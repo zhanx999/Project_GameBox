@@ -1,0 +1,1371 @@
+/* ==== Общие стили ==== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f0f17;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* ==== Шапка ==== */
+.header {
+    background: linear-gradient(135deg, #14141f 0%, #1c1c2e 50%, #14141f 100%);
+    padding: 12px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid #00e0ff33;
+    box-shadow: 0 4px 20px rgba(0, 224, 255, 0.15);
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: 800;
+    color: #00e0ff;
+    text-shadow: 0 0 15px #00e0ff, 0 0 30px #00e0ff;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.logo a::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00e0ff, #ff2bd4);
+    transition: width 0.4s ease;
+}
+
+.logo a:hover {
+    color: #ff2bd4;
+    text-shadow: 0 0 20px #ff2bd4, 0 0 40px #ff2bd4;
+    transform: translateY(-2px);
+}
+
+.logo a:hover::before {
+    width: 100%;
+}
+/* ==== Улучшенные кнопки авторизации ==== */
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.auth-buttons button {
+    background: linear-gradient(135deg, #00e0ff 0%, #0088ff 100%);
+    color: #0f0f17;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.auth-buttons button:hover {
+    background: linear-gradient(135deg, #ff2bd4 0%, #ff0080 100%);
+    box-shadow: 0 0 25px rgba(255, 43, 212, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ==== Улучшенный профиль пользователя ==== */
+.user-profile {
+    position: relative;
+}
+
+.profile-button {
+    background: linear-gradient(135deg, #00e0ff 0%, #0088ff 100%);
+    color: #0f0f17;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profile-button::after {
+    content: '▼';
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+
+.profile-button:hover {
+    background: linear-gradient(135deg, #ff2bd4 0%, #ff0080 100%);
+    box-shadow: 0 0 25px rgba(255, 43, 212, 0.4);
+}
+
+.profile-button:hover::after {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #1f1f2f;
+    border: 2px solid #00e0ff33;
+    border-radius: 8px;
+    padding: 10px 0;
+    margin-top: 10px;
+    min-width: 150px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.user-profile:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    list-style: none;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+    background: linear-gradient(135deg, #00e0ff33 0%, #ff2bd433 100%);
+    color: #00e0ff;
+    padding-left: 25px;
+}
+
+
+/* ==== Контент ==== */
+main {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #1b1b2b;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==== Футер ==== */
+/* ==== Улучшенный футер ==== */
+footer {
+    background: linear-gradient(180deg, #14141f 0%, #0f0f17 100%);
+    color: #888;
+    text-align: center;
+    padding: 25px 0;
+    font-size: 14px;
+    border-top: 3px solid #00e0ff33;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+    text-shadow: 0 0 10px rgba(0, 224, 255, 0.3);
+}
+
+/* ==== Адаптивность для шапки ==== */
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .logo a {
+        font-size: 24px;
+    }
+    
+    .auth-buttons {
+        gap: 10px;
+    }
+    
+    .auth-buttons button {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    .profile-button {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 12px 15px;
+    }
+    
+    .logo a {
+        font-size: 20px;
+    }
+    
+    .auth-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .auth-buttons button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ==== Анимации ==== */
+@keyframes glow {
+    0% { box-shadow: 0 0 10px #00e0ff; }
+    50% { box-shadow: 0 0 20px #00e0ff, 0 0 30px #00e0ff; }
+    100% { box-shadow: 0 0 10px #00e0ff; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+/* ==== Дополнительные эффекты ==== */
+.auth-buttons a {
+    text-decoration: none;
+}
+
+.auth-buttons button {
+    animation: float 3s ease-in-out infinite;
+}
+
+.auth-buttons button:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+/* ==== Эффект неонового свечения ==== */
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #00e0ff, transparent);
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* ==== Ссылки ==== */
+a {
+    color: #00e0ff;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff2bd4;
+}
+/* ==== Поисковая форма ==== */
+/* ==== Исправленная поисковая форма ==== */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.search-container form {
+    display: flex;
+    align-items: center; /* Добавлено выравнивание по центру */
+    gap: 10px;
+    background: #14141f;
+    padding: 10px 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,224,255,0.3);
+    height: 50px; /* Фиксированная высота для выравнивания */
+}
+
+/* Поле ввода */
+#search-input {
+    padding: 12px 15px; /* Увеличено padding для лучшего выравнивания */
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background: #1f1f2f;
+    color: #e0e0e0;
+    font-size: 16px;
+    width: 250px;
+    transition: all 0.3s ease;
+    height: 40px; /* Фиксированная высота */
+    box-sizing: border-box; /* Чтобы padding не влиял на высоту */
+}
+
+#search-input:focus {
+    box-shadow: 0 0 8px #00e0ff, 0 0 20px #00e0ff;
+}
+
+/* Кнопка поиска */
+.search-container .submit-button {
+    background: #00e0ff;
+    color: #0f0f17;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px; /* Увеличен padding для лучшего вида */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px #00e0ff;
+    height: 40px; /* Такая же высота как у input */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px; /* Минимальная ширина */
+}
+
+.search-container .submit-button:hover {
+    background: #ff2bd4;
+    color: #fff;
+    box-shadow: 0 0 12px #ff2bd4;
+    transform: translateY(-1px); /* Легкое поднятие при hover */
+}
+
+/* Убираем inset тени которые были раньше */
+.search-container .submit-button,
+.search-container .submit-button:hover {
+    box-shadow: 0 0 10px #00e0ff;
+    background-image: none;
+}
+
+.search-container .submit-button:hover {
+    box-shadow: 0 0 15px #ff2bd4;
+}
+/* ==== Сетка игр ==== */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 10px;
+}
+
+/* ==== Карточка игры ==== */
+.game-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    background: #1f1f2f;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px rgba(0,224,255,0.2);
+    cursor: pointer;
+    position: relative;
+}
+
+/* Подсветка при наведении */
+.game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 15px #00e0ff, 0 0 25px rgba(0,224,255,0.6);
+}
+
+/* ==== Картинка игры ==== */
+.game-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 2px solid #00e0ff33;
+    transition: transform 0.3s ease;
+}
+
+.game-card:hover .game-image {
+    transform: scale(1.05);
+}
+
+/* ==== Заголовок игры ==== */
+.game-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #e0e0e0;
+    padding: 12px;
+    width: 100%;
+    background: #14141f;
+    border-top: 2px solid #2f2f45;
+    transition: all 0.3s ease;
+}
+
+.game-card:hover .game-title {
+    color: #00e0ff;
+    text-shadow: 0 0 10px #00e0ff;
+}
+
+/* ==== Кнопка "Назад" и заголовок ==== */
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.back-button a svg {
+    fill: #00e0ff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.back-button a:hover svg {
+    fill: #ff2bd4;
+    filter: drop-shadow(0 0 10px #ff2bd4);
+}
+
+.back-button .game-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #e0e0e0;
+    text-shadow: 0 0 6px #00e0ff;
+}
+
+/* ==== Основной контейнер игры ==== */
+.game-details {
+    background: #1b1b2b;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,224,255,0.15);
+    margin-bottom: 30px;
+}
+
+/* ==== Блок с картинкой и описанием ==== */
+.flex-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.game-image {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,224,255,0.4);
+    transition: transform 0.3s ease;
+}
+
+.game-image:hover {
+    transform: scale(1.05);
+}
+
+.game-description {
+    flex: 1;
+    background: #14141f;
+    padding: 15px;
+    border-radius: 12px;
+    line-height: 1.7;
+    font-size: 16px;
+    box-shadow: 0 0 8px rgba(0,224,255,0.2);
+}
+
+.game-description strong {
+    color: #00e0ff;
+}
+
+/* ==== Системные требования ==== */
+.system-requirements {
+    margin-top: 20px;
+    padding: 15px;
+    background: #14141f;
+    border-radius: 12px;
+    font-size: 15px;
+    line-height: 1.6;
+    box-shadow: inset 0 0 10px rgba(0,224,255,0.2);
+}
+
+.system-requirements h3 {
+    margin-top: 0;
+    color: #ff2bd4;
+    text-shadow: 0 0 6px #ff2bd4;
+}
+
+/* ==== Видео ==== */
+.youtube-video {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.youtube-video iframe {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,224,255,0.3);
+    max-width: 100%;
+}
+
+/* ==== Скриншоты ==== */
+.game-screenshots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.game-screenshots img {
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,224,255,0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.game-screenshots img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00e0ff, 0 0 25px rgba(0,224,255,0.6);
+}
+
+/* ==== Модальное окно ==== */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(15,15,23,0.95);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,224,255,0.5);
+    animation: zoomIn 0.3s ease;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #00e0ff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 12px #00e0ff;
+}
+
+.close:hover {
+    color: #ff2bd4;
+    text-shadow: 0 0 15px #ff2bd4;
+}
+
+/* ==== Анимации ==== */
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ==== Стили для формы входа ==== */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #1b1b2b;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.login-container h2 {
+    text-align: center;
+    color: #00e0ff;
+    margin-bottom: 25px;
+    text-shadow: 0 0 8px #00e0ff;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #e0e0e0;
+    font-weight: bold;
+}
+
+.form-group input {
+    padding: 12px 15px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background: #14141f;
+    color: #e0e0e0;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    box-shadow: 0 0 8px #00e0ff, 0 0 20px #00e0ff;
+}
+
+.submit-button {
+    background: #00e0ff;
+    color: #0f0f17;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px #00e0ff;
+    margin-top: 10px;
+}
+
+.submit-button:hover {
+    background: #ff2bd4;
+    color: #fff;
+    box-shadow: 0 0 12px #ff2bd4;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==== Стили для формы регистрации ==== */
+.register-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 35px;
+    background: #1b1b2b;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.7);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.register-container h2 {
+    text-align: center;
+    color: #00e0ff;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px #00e0ff;
+    font-size: 28px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #e0e0e0;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 14px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: #14141f;
+    color: #e0e0e0;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border: 2px solid #2f2f45;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #00e0ff;
+    box-shadow: 0 0 12px #00e0ff;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+}
+
+.error {
+    color: #ff2bd4;
+    font-size: 14px;
+    margin-top: 5px;
+    text-shadow: 0 0 5px #ff2bd4;
+}
+
+.submit-button {
+    background: linear-gradient(135deg, #00e0ff, #0088ff);
+    color: #0f0f17;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 16px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px #00e0ff;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-button:hover {
+    background: linear-gradient(135deg, #ff2bd4, #ff0080);
+    box-shadow: 0 0 20px #ff2bd4;
+    transform: translateY(-2px);
+}
+
+/* Стили для поля загрузки аватара */
+.form-group input[type="file"] {
+    padding: 12px;
+    background: #1f1f2f;
+    cursor: pointer;
+}
+
+.form-group input[type="file"]::file-selector-button {
+    background: #00e0ff;
+    color: #0f0f17;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+    background: #ff2bd4;
+    color: #fff;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .register-container {
+        margin: 20px;
+        padding: 25px;
+    }
+    
+    .register-container h2 {
+        font-size: 24px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+    }
+    
+    .submit-button {
+        padding: 14px 25px;
+        font-size: 16px;
+    }
+}
+
+/* ==== Стили для страницы профиля ==== */
+/* ==== Стили для улучшенного профиля ==== */
+.profile-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, #1b1b2b 0%, #14141f 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 224, 255, 0.1);
+}
+
+.avatar-section {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #00e0ff;
+    box-shadow: 0 0 30px rgba(0, 224, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+.avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.avatar-section:hover .avatar-overlay {
+    opacity: 1;
+}
+
+.avatar-upload-btn {
+    color: #fff;
+    background: #00e0ff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.avatar-upload-btn:hover {
+    background: #ff2bd4;
+}
+
+.hidden-upload {
+    display: none;
+}
+
+.profile-header h1 {
+    color: #00e0ff;
+    font-size: 36px;
+    margin: 0 0 10px 0;
+    text-shadow: 0 0 20px rgba(0, 224, 255, 0.5);
+}
+
+.profile-subtitle {
+    color: #888;
+    font-size: 16px;
+    margin: 0;
+}
+
+.profile-content {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 30px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.info-card {
+    background: linear-gradient(135deg, #1f1f2f 0%, #14141f 100%);
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 4px solid #00e0ff;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+    border-left-color: #ff2bd4;
+    box-shadow: 0 8px 25px rgba(255, 43, 212, 0.2);
+}
+
+.info-icon {
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 224, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-label {
+    display: block;
+    color: #888;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.info-value {
+    display: block;
+    color: #e0e0e0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.bio-card {
+    grid-column: 1 / -1;
+}
+
+.bio-card .info-value {
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.profile-actions {
+    background: #1b1b2b;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-checkbox {
+    display: none;
+}
+
+.edit-button {
+    display: block;
+    background: linear-gradient(135deg, #00e0ff 0%, #0088ff 100%);
+    color: #0f0f17;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 224, 255, 0.3);
+}
+
+.edit-button:hover {
+    background: linear-gradient(135deg, #ff2bd4 0%, #ff0080 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 43, 212, 0.4);
+}
+
+.profile-edit-form {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.toggle-checkbox:checked ~ .profile-edit-form {
+    max-height: 600px;
+}
+
+.profile-edit-form h2 {
+    color: #00e0ff;
+    margin: 25px 0 20px 0;
+    text-align: center;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.cancel-button {
+    background: #666;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cancel-button:hover {
+    background: #888;
+    transform: translateY(-1px);
+}
+
+.char-count {
+    text-align: right;
+    color: #888;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Адаптивность */
+@media (max-width: 900px) {
+    .profile-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-header h1 {
+        font-size: 28px;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-header {
+        padding: 20px;
+    }
+    
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .edit-button {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
+/* Анимация появления элементов списка */
+.profile-info li {
+    animation: slideIn 0.5s ease-in-out;
+}
+
+.profile-info li:nth-child(1) { animation-delay: 0.1s; }
+.profile-info li:nth-child(2) { animation-delay: 0.2s; }
+.profile-info li:nth-child(3) { animation-delay: 0.3s; }
+.profile-info li:nth-child(4) { animation-delay: 0.4s; }
+.profile-info li:nth-child(5) { animation-delay: 0.5s; }
+.profile-info li:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Стиль для пустой биографии */
+.profile-info li:empty::before {
+    content: "Не указано";
+    color: #888;
+    font-style: italic;
+}
+
+.comment-section {
+    background: #1e1e1e;
+    color: #f0f0f0;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.comment-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffd700; /* золотистый */
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment-form textarea {
+    resize: none;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    background: #2a2a2a;
+    color: #fff;
+    min-height: 100px;
+    font-size: 14px;
+    transition: border 0.3s ease;
+}
+
+.comment-form textarea:focus {
+    outline: none;
+    border: 1px solid #ffd700;
+    box-shadow: 0 0 5px #ffd700;
+}
+
+.submit-button {
+    align-self: flex-end;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #ffd700;
+    color: #1e1e1e;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-button:hover {
+    background: #e6c200;
+}
+
+.comment-section p {
+    padding: 8px 12px;
+    border-bottom: 1px solid #333;
+    font-size: 15px;
+}
+
+.comment-section p strong {
+    color: #ffd700;
+}
+
+.comment-date {
+    font-size: 12px;
+    color: #aaa;
+    margin-left: 8px;
+}
+/* ====== Стили для библиотеки ====== */
+.library-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    margin: 20px 0;
+    list-style: none;
+}
+
+.library-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.library-list li:hover {
+    background: #eaeaea;
+}
+
+.library-list a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #333;
+}
+
+.library-list a:hover {
+    color: #007bff;
+}
+
+/* Кнопка "Удалить" */
+.remove-from-library-button {
+    background: #dc3545;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.remove-from-library-button:hover {
+    background: #c82333;
+}
+
+
+/* ====== Стили для формы подтверждения ====== */
+.confirm-form {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.confirm-form button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.confirm-form button:hover {
+    background: #218838;
+}
+
+.confirm-form a {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    background: #6c757d;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.confirm-form a:hover {
+    background: #5a6268;
+}
+
+/* ====== Стили для сообщений ====== */
+.messages {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.messages .alert {
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Успех */
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+/* Предупреждение */
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeeba;
+}
+
+/* Ошибка */
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+/* Информация */
+.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-color: #bee5eb;
+}
+
+/* Плавное появление */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* ====== Кнопка "Добавить в библиотеку" ====== */
+.add-to-library-button {
+    display: inline-block;
+    background-color: #007bff;  /* синий как основной */
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.add-to-library-button:hover {
+    background-color: #0056b3;  /* темнее при наведении */
+    transform: translateY(-2px); /* лёгкий "подъём" */
+}
+
+.add-to-library-button:active {
+    background-color: #004494;  /* ещё темнее при клике */
+    transform: translateY(0);
+}
+
+/* ====== Кнопка "Моя библиотека" ====== */
+.my-library-button {
+    display: inline-block;
+    background-color: #00e0ff; /* зелёный */
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.my-library-button:hover {
+    background-color: #008293; /* темнее при наведении */
+    transform: translateY(-2px);
+}
+
+.my-library-button:active {
+    background-color: #02424a; /* ещё темнее при клике */
+    transform: translateY(0);
+}

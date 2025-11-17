@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class = "search-container">
+        <form method="get">
+            <input type="text" name = "q" id = "search-input" placeholder = "Введите название игры">
+            <button class = "submit-button">Поиск</button>
+        </form>
+    </div>
+
+
+
+    {% comment %} <h1>Список игр</h1>
+    <ul>
+        {% if games %}
+            {% for game in games %}
+                <li>{{game}}</li>
+            {% endfor %}   
+        {% else %}
+            <li>Игра не найдена</li>     
+        {% endif %}
+    </ul> {% endcomment %}
+
+
+
+    <div class = "game-grid">
+        {% for game in games %}
+            <a href="{% url "game_detail" game.id %}" class ="game-card">
+                <img class= "game-image" src="{{game.image.url}}" alt="{{game.title}} cover" width ="250" height = "150">
+                <div class = "game-title">{{game.title}}</div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock%}
+
+

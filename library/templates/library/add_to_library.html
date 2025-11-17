@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Добавить в Библиотеку</h2>
+    <p>Вы уверены, что хотите добавить игру "{{ game.title }}" в свою Библиотеку?</p>
+    <form method="POST" class="confirm-form">
+        {% csrf_token %}
+        <button type="submit">Да, добавить!</button>
+        <a href="{% url "game_detail" game.id %}">Нет, отмена</a>
+    </form>
+{% endblock content %}

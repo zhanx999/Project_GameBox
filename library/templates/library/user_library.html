@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Моя библиотека</h2>
+    <ul class="library-list">
+        {% for library_game in library_games %}
+            <li>
+                <a href="{% url 'game_detail' library_game.game.id %}">{{ library_game.game.title }}</a>
+                <a href="{% url 'remove_from_library' library_game.game.id %}" class="remove-from-library-button">Удалить</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

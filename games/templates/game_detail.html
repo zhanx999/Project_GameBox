@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="back-button">
+        <a href="{% url 'game_list' %}">
+            <svg width="48" height="48" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.008 10.996L2.004 7.992l5.004-2.996v1.997h6.996v1.998H7.008v2.005z" fill="#fff"></path>
+            </svg>
+        </a>
+        <h2 class="game-title">{{ game.title }}</h2>
+        <a href="{%url 'add_to_library' game.id %}" class = "add-to-library-button">Добавить игру в Библиотеку</a>
+    </div>
+
+    <div class="game-details">
+        <div class="game-info">
+            <div class="game-image-text flex-container">
+                <img src="{{ game.image.url }}" alt="{{ game.title }}" class="game-image">
+                <div class="game-description">
+                    <p>{{ game.description }}</p>
+                    <p><strong>Дата выхода:</strong> {{ game.release_date }}</p>
+                    <p><strong>Жанр:</strong> {{ game.genre }}</p>
+                    <p><strong>Разработчик:</strong> {{ game.developer }}</p>
+                    <p><strong>Издатель:</strong> {{ game.publisher }}</p>
+                    <p><strong>Платформа:</strong> {{ game.platform }}</p>
+                    <p><strong>Тип издания:</strong> {{ game.edition }}</p>
+                </div>
+            </div>
+            <div class="system-requirements">
+                <h3>Системные требования:</h3>
+                <strong>Операционная система:</strong> {{ game.os_req }}<br>
+                <strong>Процессор:</strong> {{ game.cpu_req }}<br>
+                <strong>Оперативная память:</strong> {{ game.ram_req }}<br>
+                <strong>Видеокарта:</strong> {{ game.gpu_req }}<br>
+                <strong>Место на диске:</strong> {{ game.disk_req }}
+            </div>
+        </div>
+    </div>
+
+    <div class="game-media">
+        {% if game.video_url %}
+        <div class="youtube-video">
+            <iframe width="560" height="315" src="{{ game.video_url }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        {% endif %}
+
+        {% if screenshots %}
+        <div class="game-screenshots">
+            {% for screenshot in screenshots %}
+            <a href="#" data-image="{{ screenshot.image.url }}" class="screenshot-link">
+                <img src="{{ screenshot.image.url }}" alt="{{ game.title }} screenshot" width="200" height="150">
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="modal" id="screenshotModal">
+        <span class="close">x</span>
+        <div class="modal-content">
+            <img src="" id="modalImage" alt="">
+        </div>
+    </div>
+{% block script %}
+<script>
+    // Получаем модальное окно
+    var modal = document.getElementById("screenshotModal");
+    // Кнопка закрытия
+    var span = document.getElementsByClassName("close")[0];
+
+    // Закрыть по кнопке
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Закрыть по клику вне окна
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Обработка кликов по скриншотам
+    var screenshotLinks = document.querySelectorAll(".screenshot-link");
+    screenshotLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            var imageUrl = this.dataset.image;
+            var modalImage = document.getElementById("modalImage");
+            modalImage.src = imageUrl;
+            modalImage.style.width = "1000px";
+            modalImage.style.height = "600px";
+            modal.style.display = "block";
+        });
+    });
+</script>
+{% endblock script %}
+
+{% if user.is_authenticated %}
+<div class = "comment-section">
+    <h3>Оставить комментарий</h3>
+    <form method = "POST" class = "comment-form">
+        {% csrf_token %}
+        <textarea name="comment" placeholder ="Ваш коммент..."></textarea>
+        <button class = "submit-button">Отправить</button>
+    </form>
+</div>
+{% endif %}
+
+<div class = "comment-section">
+    <h3>Комментарии</h3>
+    {% for comment in comments %}
+        <p> 
+            <strong><a href={% url "profile" %}>{{comment.author}}:</a></strong>
+            {{comment.content}}
+            <span class= "comment-date">({{ comment.created_at }})</span>   
+        </p>
+    {% endfor %}
+</div>
+
+{% endblock content %}
+
