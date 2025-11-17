@@ -48,3 +48,29 @@ def game_detail(request,game_id):
         'screenshots':screenshots
     }
     return render(request,'game_detail.html',context)
+
+
+
+
+#-------------------------- API Views ---------------------------------#
+from rest_framework import viewsets, permissions
+from .models import Game, Screenshot, Comment
+from .serializers import GameSerializer, ScreenshotSerializer, CommentSerializer
+
+class GameViewSet(viewsets.ModelViewSet):
+    queryset = Game.objects.all()
+    serializer_class = GameSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class ScreenshotViewSet(viewsets.ModelViewSet):
+    queryset = Screenshot.objects.all()
+    serializer_class = ScreenshotSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)

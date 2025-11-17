@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'games',
     'users',
-    'library'
+    'library',
+    'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +135,4 @@ AUTH_USER_MODEL = "users.CustomUser"
 
 LOGIN_REDIRECT_URL = "game_list"
 LOGOUT_REDIRECT_URL = "game_list"
+LOGIN_URL = '/login/'

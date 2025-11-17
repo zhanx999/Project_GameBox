@@ -20,7 +20,7 @@ class Game(models.Model):
     disk_req = models.CharField(max_length=50, default="0", verbose_name="Место на жестком диске",null=True, blank=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True, verbose_name="URL-метка")
     screenshots = models.ManyToManyField('Screenshot',blank= True,verbose_name="Скриншоты",related_name='games')
-    video_url = models.URLField(blank = True,verbose_name="Ссылка на видео")
+    video_url = models.URLField(blank = True,verbose_name="Ссылка на видео",null=True)
 
     class Meta:
         verbose_name = "Игра"
