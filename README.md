@@ -1,7 +1,7 @@
-# GamePoisk
+# GameBox
 
 **Description:**  
-GamePoisk is a web application built with Django where users can explore and discuss games. Users can view game details, system requirements, leave comments, and share their opinions.  
+GameBox is a web application built with Django where users can explore and discuss games. Users can view game details, system requirements, leave comments, and share their opinions.  
 
 **Features:**  
 - User registration and login  
